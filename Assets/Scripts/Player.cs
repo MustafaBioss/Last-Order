@@ -9,27 +9,23 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        Vector3 move =
+            transform.forward * Input.GetAxis("Vertical") + 
+            transform.right * Input.GetAxis("Horizontal");
+
+        move.Normalize();
+
+        transform.position += move * moveSpeed * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.Space))
         {
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        };
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        };
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-        };
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        };
+            
+        }
     }
 }
