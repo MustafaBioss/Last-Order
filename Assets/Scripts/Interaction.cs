@@ -58,8 +58,12 @@ public class Interaction : MonoBehaviour
                 if (hit.transform.name == "BoardMesh")
                 {
                     CuttingBoard cuttingBoard = hit.transform.GetComponent<CuttingBoard>();
+
+                    GameObject board = cuttingBoard.transform.parent.gameObject;
+
                     cuttingBoard.OnDropItem(heldObject);
 
+                    board.transform.rotation = Quaternion.identity;
                     heldObject = null;
 
                     Debug.Log("Dropped object on Cutting Board");
@@ -67,6 +71,7 @@ public class Interaction : MonoBehaviour
                 else
                 {
                     heldObject.transform.SetParent(null);
+                    heldObject.transform.rotation = Quaternion.identity;
                     heldObject = null;
                     Debug.Log("Dropped object");
                 }
