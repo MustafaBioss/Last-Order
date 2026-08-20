@@ -27,13 +27,32 @@ public class Interaction : MonoBehaviour
             hitName = hit.collider.name;
             StartCoroutine(Log());
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
+            
             if (Input.GetKeyDown(KeyCode.E) && heldObject == null)
             {
-                hit.transform.SetParent(holdPoint.transform, false);
-                hit.transform.localPosition = Vector3.zero;
-                heldObject = hit.transform.gameObject;
-                Debug.Log("Picked up: " + hit.collider.name);
+
+                CuttingBoard cuttingBoard = hit.transform.GetComponent<CuttingBoard>();
+
+                if (cuttingBoard != null)
+                {
+                    GameObject board = cuttingBoard.transform.parent.gameObject;
+
+                    board.transform.SetParent(holdPoint.transform, false);
+                    board.transform.localPosition = Vector3.zero;
+
+
+                    heldObject = board;
+                }
+                else 
+                {
+                    hit.transform.SetParent(holdPoint.transform, false);
+                    hit.transform.localPosition = Vector3.zero;
+
+                    heldObject = hit.transform.gameObject;
+                    Debug.Log("Picked up: " + hit.collider.name);
+                }
             }
+            
             if (Input.GetKeyDown(KeyCode.Q) && heldObject != null)
             {
                 if (hit.transform.name == "BoardMesh")

@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 13177151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.225, z: -0.75}
+  m_LocalPosition: {x: 0.5, y: 0.225, z: -0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1186,7 +1186,7 @@ Transform:
   m_GameObject: {fileID: 755310269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.225, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.225, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1490,7 +1490,7 @@ Transform:
   m_GameObject: {fileID: 911331531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.225, z: 0.75}
+  m_LocalPosition: {x: 0.5, y: 0.225, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1536,6 +1536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1034418709}
+  - component: {fileID: 1034418710}
   m_Layer: 0
   m_Name: Cutting Board
   m_TagString: Untagged
@@ -1568,6 +1569,28 @@ Transform:
   - {fileID: 1881027021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1034418710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034418705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9271149fc9884b42b9ae8ae7eba0093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CuttingBoard
+  holdPoints:
+  - {fileID: 911331531}
+  - {fileID: 1483527482}
+  - {fileID: 1561974994}
+  - {fileID: 2048951883}
+  - {fileID: 1023034673}
+  - {fileID: 755310269}
+  - {fileID: 13177151}
+  - {fileID: 1106557652}
+  - {fileID: 1881027020}
 --- !u!1 &1037328783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,7 +2574,7 @@ Transform:
   m_GameObject: {fileID: 1561974994}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.225, z: 0.75}
+  m_LocalPosition: {x: -0.5, y: 0.225, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2918,7 +2941,7 @@ Transform:
   m_GameObject: {fileID: 1881027020}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.225, z: -0.75}
+  m_LocalPosition: {x: -0.5, y: 0.225, z: -0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2980,7 +3003,7 @@ Transform:
   m_GameObject: {fileID: 2048951883}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0.225, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.225, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2998,7 +3021,7 @@ GameObject:
   - component: {fileID: 2098044592}
   - component: {fileID: 2098044591}
   - component: {fileID: 2098044590}
-  - component: {fileID: 2098044589}
+  - component: {fileID: 2098044593}
   m_Layer: 0
   m_Name: BoardMesh
   m_TagString: Untagged
@@ -3021,28 +3044,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1034418709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2098044589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098044587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9271149fc9884b42b9ae8ae7eba0093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CuttingBoard
-  holdPoints:
-  - {fileID: 911331531}
-  - {fileID: 1483527482}
-  - {fileID: 1561974994}
-  - {fileID: 2048951883}
-  - {fileID: 1023034673}
-  - {fileID: 755310269}
-  - {fileID: 13177151}
-  - {fileID: 1106557652}
-  - {fileID: 1881027020}
 --- !u!65 &2098044590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3121,6 +3122,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098044587}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2098044593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098044587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9271149fc9884b42b9ae8ae7eba0093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CuttingBoard
+  holdPoints:
+  - {fileID: 911331531}
+  - {fileID: 1483527482}
+  - {fileID: 1561974994}
+  - {fileID: 2048951883}
+  - {fileID: 1023034673}
+  - {fileID: 755310269}
+  - {fileID: 13177151}
+  - {fileID: 1106557652}
+  - {fileID: 1881027020}
 --- !u!1 &2122219276
 GameObject:
   m_ObjectHideFlags: 0
