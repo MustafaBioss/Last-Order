@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class Interaction : MonoBehaviour
     [SerializeField] public GameObject holdPoint;
     private GameObject heldObject = null;
     private string hitName;
+
+    [SerializeField] public RawImage crosshair;
+
+    public string[] holdableObjects = { "Knife", "Tomato", "Lettuce", "Cheese", "Bread", "Meat", "BoardMesh" };
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,32 +29,57 @@ public class Interaction : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, 5f))
         {
+            if (hit.collider.CompareTag("Holdable"))
+            {
+                crosshair.color = Color.green;
+                hitName = hit.collider.name;
+                StartCoroutine(Log());
+                Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
+            }
+            else
+            {
+                crosshair.color = Color.white;
+            }
+            
             hitName = hit.collider.name;
             StartCoroutine(Log());
             Debug.DrawRay(transform.position, transform.forward * hit.distance, Color.green);
             
             if (Input.GetKeyDown(KeyCode.E) && heldObject == null)
             {
-
-                CuttingBoard cuttingBoard = hit.transform.GetComponent<CuttingBoard>();
-
-                if (cuttingBoard != null)
+                
+                if (hit.collider.CompareTag("Holdable"))
                 {
-                    GameObject board = cuttingBoard.transform.parent.gameObject;
+                    CuttingBoard cuttingBoard = hit.transform.GetComponent<CuttingBoard>();
 
-                    board.transform.SetParent(holdPoint.transform, false);
-                    board.transform.localPosition = Vector3.zero;
+                    if (cuttingBoard != null)
+                    {
+                        GameObject board = cuttingBoard.transform.parent.gameObject;
 
 
-                    heldObject = board;
+                        board.transform.rotation = Quaternion.identity;
+                        board.transform.SetParent(holdPoint.transform, false);
+                        board.transform.localPosition = Vector3.zero;
+
+
+                        heldObject = board;
+                    }
+                    else 
+                    {
+
+                        heldObject = hit.transform.gameObject;
+                        heldObject.transform.rotation = Quaternion.identity;
+
+                        hit.transform.SetParent(holdPoint.transform, false);
+                        hit.transform.localPosition = Vector3.zero;
+
+                        Debug.Log("Picked up: " + hit.collider.name);
+                    }
                 }
-                else 
+                else
                 {
-                    hit.transform.SetParent(holdPoint.transform, false);
-                    hit.transform.localPosition = Vector3.zero;
-
-                    heldObject = hit.transform.gameObject;
-                    Debug.Log("Picked up: " + hit.collider.name);
+                    Debug.Log("Cannot pick up: " + hit.collider.name);
+                    return;
                 }
             }
             
@@ -70,8 +100,8 @@ public class Interaction : MonoBehaviour
                 }
                 else
                 {
-                    heldObject.transform.SetParent(null);
                     heldObject.transform.rotation = Quaternion.identity;
+                    heldObject.transform.SetParent(null);
                     heldObject = null;
                     Debug.Log("Dropped object");
                 }
@@ -80,6 +110,7 @@ public class Interaction : MonoBehaviour
         else 
             {
                 Debug.DrawRay(transform.position, transform.forward * 5f, Color.red);
+                crosshair.color = Color.white;
             }
     }
 
